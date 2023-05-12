@@ -20,16 +20,6 @@ namespace GenericsAndModern
             return new Integer(_value + (number)._value);
         }
 
-        public Integer Divide(Integer number)
-        {
-            return new Integer(_value / (number)._value);
-        }
-
-        public Integer Multiply(Integer number)
-        {
-            return new Integer(_value * (number)._value);
-        }
-
         public Integer Subtract(Integer number)
         {
             return new Integer(_value - (number)._value);

@@ -20,16 +20,6 @@ namespace GenericsAndModern
             return new Decimal(_value + (number)._value);
         }
 
-        public Decimal Divide(Decimal number)
-        {
-            return new Decimal(_value / (number)._value);
-        }
-
-        public Decimal Multiply(Decimal number)
-        {
-            return new Decimal(_value * (number)._value);
-        }
-
         public Decimal Subtract(Decimal number)
         {
             return new Decimal(_value - (number)._value);

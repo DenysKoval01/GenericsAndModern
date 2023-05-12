@@ -10,7 +10,5 @@ namespace GenericsAndModern
     {
         T Add(T number);
         T Subtract(T number);
-        T Multiply(T number);
-        T Divide(T number);
     }
 }

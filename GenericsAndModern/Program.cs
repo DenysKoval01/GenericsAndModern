@@ -48,9 +48,6 @@ namespace GenericsAndModern
                 Console.WriteLine();
             }
 
-            Console.WriteLine();
         }
-
-
     }
 }

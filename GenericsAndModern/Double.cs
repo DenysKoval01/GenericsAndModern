@@ -20,16 +20,6 @@ namespace GenericsAndModern
             return new Double(_value + (number)._value);
         }
 
-        public Double Divide(Double number)
-        {
-            return new Double(_value / (number)._value);
-        }
-
-        public Double Multiply(Double number)
-        {
-            return new Double(_value * (number)._value);
-        }
-
         public Double Subtract(Double number)
         {
             return new Double(_value - (number)._value);
