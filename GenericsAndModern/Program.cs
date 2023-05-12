@@ -7,33 +7,50 @@ namespace GenericsAndModern
     {
         static void Main(string[] args)
         {
-            Matrix<Double> m1 = new Matrix<Double>(new Double[,] { { 1.0, 2.0 }, { 3.0, 4.0 } });
-            Matrix<Double> m2 = new Matrix<Double>(new Double[,] { { 5.0, 6.0 }, { 7.0, 8.0 } });
+            // Create two matrices of integers
+            var matrix1 = new Matrix<Integer>(new Integer[,] { { new Integer(1), new Integer(2) }, { new Integer(3), new Integer(4) } });
+            var matrix2 = new Matrix<Integer>(new Integer[,] { { new Integer(5), new Integer(6) }, { new Integer(7), new Integer(8) } });
 
-            Matrix<Double> result = m1.PerformOperation(m2, (x, y) => x.Add(y));
-            Matrix<Double> result1 = m1.PerformOperation(m2, (x, y) => x.Multiply(y));
+            // Add the two matrices together
+            var sumMatrix = matrix1.PerformOperation(matrix2, (x, y) => x.Add(y));
+
+            // Print the resulting matrix
+            Console.WriteLine("\nSum matrix:\n");
+            PrintMatrix(sumMatrix);
+
+            // Subtract matrix2 from matrix1
+            var diffMatrix = matrix1.PerformOperation(matrix2, (x, y) => x.Subtract(y));
+
+            // Print the resulting matrix
+            Console.WriteLine("\nDifference matrix:\n");
+            PrintMatrix(diffMatrix);
+
+            // Multiply matrix1 and matrix2
+            var productMatrix = matrix1.PerformOperation(matrix2, (x, y) => x.Multiply(y));
+
+            // Print the resulting matrix
+            Console.WriteLine("\nProduct matrix:\n");
+            PrintMatrix(productMatrix);
 
 
-            WriteConsoleResultOfOperation(result);
-
-            WriteConsoleResultOfOperation(result1);
-
+            Console.ReadKey();
         }
 
-        private static void WriteConsoleResultOfOperation<T>(Matrix<T> matrix) where T : INumber
+        private static void PrintMatrix<T>(Matrix<T> matrix) where T : INumber<T>
         {
-
-            // print the result
-            Console.WriteLine("\nResult:\n");
             for (int i = 0; i < matrix.Rows; i++)
             {
                 for (int j = 0; j < matrix.Columns; j++)
                 {
-                    Console.Write($"{matrix.GetElement(i, j)}  ");
+                    Console.Write(matrix.GetElement(i, j).ToString() + " ");
                 }
-                Console.WriteLine();
 
+                Console.WriteLine();
             }
+
+            Console.WriteLine();
         }
+
+
     }
 }

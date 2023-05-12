@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace GenericsAndModern
 {
-    public class Double : INumber
+    public class Double : INumber<Double>
     {
-        private readonly double _value;
+        private double _value;
 
         public Double(double value)
         {
-            _value = value;
+            this._value = value;
         }
 
-        public INumber Add(INumber other)
+        public Double Add(Double number)
         {
-            return new Double(_value + ((Double)other)._value);
+            return new Double(_value + (number)._value);
         }
 
-        public INumber Subtract(INumber other)
+        public Double Divide(Double number)
         {
-            return new Double(_value - ((Double)other)._value);
+            return new Double(_value / (number)._value);
         }
 
-        public INumber Multiply(INumber other)
+        public Double Multiply(Double number)
         {
-            return new Double(_value * ((Double)other)._value);
+            return new Double(_value * (number)._value);
         }
 
-        public INumber Divide(INumber other)
+        public Double Subtract(Double number)
         {
-            return new Double(_value / ((Double)other)._value);
+            return new Double(_value - (number)._value);
         }
 
         public override string ToString()
@@ -40,11 +40,5 @@ namespace GenericsAndModern
             return _value.ToString();
         }
 
-
-        public static implicit operator Double(double value)
-        {
-            return new Double(value);
-        }
     }
-
 }

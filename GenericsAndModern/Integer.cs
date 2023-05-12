@@ -6,44 +6,38 @@ using System.Threading.Tasks;
 
 namespace GenericsAndModern
 {
-    public class Integer : INumber
+    public class Integer : INumber<Integer>
     {
-        private readonly int _value;
+        private int _value;
 
         public Integer(int value)
         {
-            _value = value;
+            this._value = value;
         }
 
-        public INumber Add(INumber other)
+        public Integer Add(Integer number)
         {
-            return new Integer(_value + ((Integer)other)._value);
+            return new Integer(_value + (number)._value);
         }
 
-        public INumber Subtract(INumber other)
+        public Integer Divide(Integer number)
         {
-            return new Integer(_value - ((Integer)other)._value);
+            return new Integer(_value / (number)._value);
         }
 
-        public INumber Multiply(INumber other)
+        public Integer Multiply(Integer number)
         {
-            return new Integer(_value * ((Integer)other)._value);
+            return new Integer(_value * (number)._value);
         }
 
-        public INumber Divide(INumber other)
+        public Integer Subtract(Integer number)
         {
-            return new Integer(_value / ((Integer)other)._value);
+            return new Integer(_value - (number)._value);
         }
 
         public override string ToString()
         {
             return _value.ToString();
-        }
-
-
-        public static implicit operator Integer(int value)
-        {
-            return new Integer(value);
         }
 
     }

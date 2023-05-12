@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace GenericsAndModern
 {
-    public class Decimal : INumber
+    public class Decimal : INumber<Decimal>
     {
-        private readonly decimal _value;
+        private decimal _value;
 
         public Decimal(decimal value)
         {
-            _value = value;
+            this._value = value;
         }
 
-        public INumber Add(INumber other)
+        public Decimal Add(Decimal number)
         {
-            return new Decimal(_value + ((Decimal)other)._value);
+            return new Decimal(_value + (number)._value);
         }
 
-        public INumber Subtract(INumber other)
+        public Decimal Divide(Decimal number)
         {
-            return new Decimal(_value - ((Decimal)other)._value);
+            return new Decimal(_value / (number)._value);
         }
 
-        public INumber Multiply(INumber other)
+        public Decimal Multiply(Decimal number)
         {
-            return new Decimal(_value * ((Decimal)other)._value);
+            return new Decimal(_value * (number)._value);
         }
 
-        public INumber Divide(INumber other)
+        public Decimal Subtract(Decimal number)
         {
-            return new Decimal(_value / ((Decimal)other)._value);
+            return new Decimal(_value - (number)._value);
         }
 
         public override string ToString()
@@ -40,9 +40,5 @@ namespace GenericsAndModern
             return _value.ToString();
         }
 
-        public static implicit operator Decimal(decimal value)
-        {
-            return new Decimal(value);
-        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GenericsAndModern
 {
-    public class Matrix<T> where T : INumber
+    public class Matrix<T> where T : INumber<T>
     {
         private T[,] _values;
 
@@ -19,8 +19,8 @@ namespace GenericsAndModern
 
         public int Columns => _values.GetLength(1);
 
-        
-        public Matrix<T> PerformOperation(Matrix<T> other, Func<INumber, INumber, INumber> operation)
+
+        public Matrix<T> PerformOperation(Matrix<T> other, Func<T, T, T> operation)
         {
             T[,] result = new T[Rows, Columns];
 
@@ -35,57 +35,6 @@ namespace GenericsAndModern
             return new Matrix<T>(result);
         }
 
-
-        /*public Matrix<T> Add(Matrix<T> other)
-        {
-            CheckThatMatrixTheSame(other);
-
-            T[,] result = new T[Rows, Columns];
-
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    result[i, j] = (T)_values[i, j].Add(other._values[i, j]);
-                }
-            }
-
-            return new Matrix<T>(result);
-        }
-
-        public Matrix<T> Subtract(Matrix<T> other)
-        {
-            CheckThatMatrixTheSame(other);
-
-            T[,] result = new T[Rows, Columns];
-
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    result[i, j] = (T)_values[i, j].Subtract(other._values[i, j]);
-                }
-            }
-
-            return new Matrix<T>(result);
-        }
-
-        public Matrix<T> Multiply(Matrix<T> other)
-        {
-            CheckThatMatrixTheSame(other);
-
-            T[,] result = new T[Rows, Columns];
-
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    result[i, j] = (T)_values[i, j].Multiply(other._values[i, j]);
-                }
-            }
-
-            return new Matrix<T>(result);
-        }*/
 
         public T GetElement(int i, int j)
         {
